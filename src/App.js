@@ -28,9 +28,21 @@ class App extends Component {
 
           <button onClick={()=>this.setState((prevState)=>({showBlock: !prevState.showBlock}))} className="Button">Toggle</button>
 
-          <Transition in={this.state.showBlock} timeout={300}>
+          <Transition in={this.state.showBlock} timeout={300} mountOnEnter unmountOnExit>
+              {/* "mountOnEnter" mounts the element to the dom when the "in={}" is true and the "unmountOnExit" removes the element when the "in is false"*/}
+              {/* {(state)=><p>{state}</p>} */}
 
-              {(state)=><p>{state}</p>}
+              {(state)=>(
+                  <div style={{
+                      backgroundColor:'red',
+                      width: 100,
+                      height: 100,
+                      margin:'auto',
+                      transition: 'opacity 1s ease-out',
+                      opacity: state==='exiting'? 0:1
+                  }}>
+                  </div>
+              )}
 
               {/*<div style={{backgroundColor:'red', width: 100, height: 100, margin:'auto'}} ></div>*/}
           </Transition>
