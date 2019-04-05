@@ -52,3 +52,17 @@
         transform: translateY(-200%);
     }
 }
+
+
+.my-slide-enter {
+
+}
+.my-slide-enter-active {
+    animation: openModal 0.4s ease-out forwards;
+}
+.my-slide-exit {
+
+}
+.my-slide-exit-active {
+    animation: closeModal 1s ease-out forwards;
+}

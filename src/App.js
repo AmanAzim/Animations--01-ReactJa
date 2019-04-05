@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import Transition from 'react-transition-group/Transition'
 
+
 import "./App.css";
 import Modal from "./components/Modal/Modal";
 import Modal2 from "./components/Modal/Modal_2";
+import Modal3 from "./components/Modal/Modal_3";
+import Modal4 from "./components/Modal/Modal_4";
 import Backdrop from "./components/Backdrop/Backdrop";
 import List from "./components/List/List";
 
@@ -12,6 +15,8 @@ class App extends Component {
   state={
     modalIsOpen:false,
     modalIsOpen2:false,
+    modalIsOpen3:false,
+    modalIsOpen4:false,
     showBlock: false
   };
 
@@ -21,12 +26,24 @@ class App extends Component {
     showModal2=()=>{
         this.setState({modalIsOpen2: true})
     };
+    showModal3=()=>{
+        this.setState({modalIsOpen3: true})
+    };
+    showModal4=()=>{
+        this.setState({modalIsOpen4: true})
+    };
 
   closeModal=()=>{
       this.setState({modalIsOpen: false})
   };
     closeModal2=()=>{
         this.setState({modalIsOpen2: false})
+    };
+    closeModal3=()=>{
+        this.setState({modalIsOpen3: false})
+    };
+    closeModal4=()=>{
+        this.setState({modalIsOpen4: false})
     };
 
     //          {this.state.showBlock? <div style={{backgroundColor:'red', width: 100, height: 100, margin:'auto'}} ></div> : null}
@@ -70,7 +87,6 @@ class App extends Component {
                   <Modal show={state} closed={this.closeModal}/>
               )}
           </Transition>
-
           {this.state.modalIsOpen? <Backdrop show /> : null}
 
 
@@ -79,9 +95,20 @@ class App extends Component {
           {this.state.modalIsOpen2? <Backdrop show /> : null}
 
 
+          <Modal3 show={this.state.modalIsOpen3} closed={this.closeModal3}/>
+          {this.state.modalIsOpen3? <Backdrop show /> : null}
+
+          <Modal4 show={this.state.modalIsOpen4} closed={this.closeModal4}/>
+          {this.state.modalIsOpen4? <Backdrop show /> : null}
+
+
         <button className="Button" onClick={this.showModal}>Open Modal</button>
           <br></br>
         <button className="Button" onClick={this.showModal2}>Open Modal 2</button>
+          <br></br>
+        <button className="Button" onClick={this.showModal3}>Open Modal 3</button>
+          <br></br>
+        <button className="Button" onClick={this.showModal4}>Open Modal 4</button>
 
         <h3>Animating Lists</h3>
         <List />
